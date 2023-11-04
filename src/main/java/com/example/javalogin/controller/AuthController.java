@@ -1,5 +1,6 @@
 package com.example.javalogin.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -33,6 +34,11 @@ public class AuthController {
         return "login";
     }
 
+    @GetMapping("/welcome")
+    public String welcome(Model model) {
+        return "welcome";
+    }
+
     // handler method to handle user registration form request
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
@@ -63,4 +69,5 @@ public class AuthController {
         userService.saveUser(userDto);
         return "redirect:/register?success";
     }
+
 }
