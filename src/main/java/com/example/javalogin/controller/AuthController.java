@@ -38,7 +38,6 @@ public class AuthController {
 
     @GetMapping("/welcome")
     public String welcome(Model model) {
-        System.out.println(model);
         return "welcome";
     }
 
