@@ -2,11 +2,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
      >
     <head>
-        <title>Hello World!</title>
+        <title>Welcome!</title>
     </head>
     <body>
         
-        <h1 th:inline="text">Hello <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
+        <h1 th:inline="text">Hello <span sec:authorize="hasRole('Manager')"> Manager</span> <span sec:authorize="hasRole('User')"> User</span>!</h1>
+
+        <div>
+            Name: <span sec:authentication="principal.displayName"></span>
+        </div>
+
+        <div>
+            Username: <span sec:authentication="principal.username"></span>
+        </div>
+
+        <div>
+            Role: <span sec:authentication="principal.authorities"></span>
+        </div>
+
+        <div sec:authorize="hasRole('Manager')">
+            <a th:href="@{/users}">Show all users</a>
+        </div>
+
         <form th:action="@{/logout}" method="post">
             <input type="submit" value="Sign Out"/>
         </form>

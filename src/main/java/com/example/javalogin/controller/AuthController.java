@@ -1,5 +1,7 @@
 package com.example.javalogin.controller;
 
+import java.util.List;
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +38,7 @@ public class AuthController {
 
     @GetMapping("/welcome")
     public String welcome(Model model) {
+        System.out.println(model);
         return "welcome";
     }
 
@@ -70,4 +73,10 @@ public class AuthController {
         return "redirect:/register?success";
     }
 
+    @GetMapping("/users")
+    public String users(Model model) {
+        List<UserDto> users = userService.findAllUsers();
+        model.addAttribute("users", users);
+        return "users";
+    }
 }
