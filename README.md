@@ -44,7 +44,7 @@ This is a simple login application demonstrating the Model-View-Controller (MVC)
 4. Build and run the application:
 
    ```bash
-  mvn spring-boot:run
+   mvn spring-boot:run
 
 5. Access the application in your web browser: http://localhost:8080
 
